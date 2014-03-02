@@ -3,6 +3,14 @@ require 'sinatra/reloader'
 
 class App < Sinatra::Base
   get '/' do
+    @message = 'Let\'s play a game!'
+
+    erb :homepage
+  end
+
+  post '/' do
+    @message = 'Well Done bro'
+
     erb :homepage
   end
 
