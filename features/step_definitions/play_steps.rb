@@ -9,3 +9,7 @@ end
 When(/^the secret is "(.*?)"$/) do |secret|
   @game.secret = secret
 end
+
+When(/^the band name is "(.*?)"$/) do |secret|
+  @game.secret = secret
+end
