@@ -221,3 +221,11 @@ end
 Then(/^show me the page$/) do
   save_and_open_page
 end
+
+Then(/^I should see "(.*?)" field$/) do |field|
+  page.should have_field(field)
+end
+
+Then(/^I should not see "(.*?)" field$/) do |field|
+  page.should_not have_field(field)
+end
