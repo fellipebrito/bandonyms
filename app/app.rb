@@ -2,11 +2,14 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 
 class App < Sinatra::Base
+  enable :sessions
+
   get '/' do
     @message = 'Let\'s play a game!'
 
     @game = Game.new
     @game.secret = 'King'
+    session[:tries] = @game.tries
 
     erb :homepage
   end
@@ -23,11 +26,17 @@ class App < Sinatra::Base
 
       template = :success
     else
-      @game.tries = @game.tries + 1
+      @game.tries = session[:tries] + 1
+      session[:tries] = @game.tries
+
       if @game.tries <= 1
         @message = "You already tried #{@game.tries} time. Try again!"
-      else
+      elsif @game.tries > 1 && @game.tries < 5
         @message = "You already tried #{@game.tries} times. Try again!"
+      else
+        @message = "You already tried #{@game.tries} times. Game over. Go home, you are drunk"
+
+        template = :failed
       end
     end
 
