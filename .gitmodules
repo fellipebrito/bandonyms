@@ -1,3 +1,6 @@
 [submodule "vendor/hooks"]
 	path = vendor/hooks
 	url = git@github.com:fellipebrito/hooks.git
+[submodule "vendor/deploy"]
+	path = vendor/deploy
+	url = git://github.com/fellipebrito/deploy.git
