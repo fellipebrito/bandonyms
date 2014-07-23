@@ -1,4 +1,4 @@
-server '54.196.9.255', user: 'ubuntu', roles: %w{web app}
+server '54.81.223.174', user: 'ubuntu', roles: %w{web app}
 
 # set custom ssh options
 set :ssh_options, {
