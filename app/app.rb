@@ -3,6 +3,7 @@ require 'sinatra/reloader'
 
 class App < Sinatra::Base
   enable :sessions
+  set :public_dir, 'public'
 
   get '/' do
     @game = create_game

@@ -1,11 +1,13 @@
-<h3><%= @game.message %></h3>
-
-your band's antonym is <b><%= @game.secret %></b>
+<h1><%= @game.message %></h1>
+<br />
+<p class="lead">your band's antonym is <b><%= @game.secret %></b></p>
 
 <form method="POST">
-  <label>Your guess:
-    <input type="text" name="guess" />
-  </label>
+  <div class="form-group">
+    <label>
+      <input class="form-control input-lg" type="text" type="submit" name="guess" placeholder="Your guess..." />
+    </label>
+  </div>
 
-  <input type="submit" value="Try it!" />
+  <input class="btn btn-lg btn-success" type="submit" value="Try it!" />
 </form>
