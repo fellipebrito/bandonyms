@@ -25,7 +25,7 @@ class App < Sinatra::Base
   end
 
   def active_game
-     session[:game] ||= create_game
+     session[:game]
   end
 
   def template
