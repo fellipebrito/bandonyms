@@ -1,15 +1,7 @@
-Given(/^I start a game$/) do
-  @game = Game.new
+Given(/^I start a game with the band "(.*?)" and the secret "(.*?)"$/) do |band, secret|
+  @game = Game.new secret, band
 end
 
 Given(/^I already tried (\d+) times$/) do |arg1|
   @game.tries = 4
-end
-
-When(/^the secret is "(.*?)"$/) do |secret|
-  @game.secret = secret
-end
-
-When(/^the band name is "(.*?)"$/) do |secret|
-  @game.secret = secret
 end
