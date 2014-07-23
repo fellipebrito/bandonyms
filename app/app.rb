@@ -1,5 +1,5 @@
 require 'sinatra/base'
-require 'sinatra/reloader'
+# require 'sinatra/reloader'
 
 class App < Sinatra::Base
   enable :sessions
@@ -25,7 +25,7 @@ class App < Sinatra::Base
   end
 
   def active_game
-     session[:game]
+     session[:game] ||= create_game
   end
 
   def template
