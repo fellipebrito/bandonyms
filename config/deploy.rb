@@ -7,7 +7,7 @@ set :log_level, :info #debug
 
 set :repo_url, 'git@github.com:fellipebrito/bandonyms.git'
 set :branch,   proc { `git rev-parse --abbrev-ref HEAD`.chomp }
-set :deploy_to, '/var/www/rumblefish/Bandonyms'
+set :deploy_to, '/var/www/bandonyms'
 
 # Aliases
 # set :linked_files, %w{ config/settings.yml }
