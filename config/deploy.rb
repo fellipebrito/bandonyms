@@ -27,11 +27,4 @@ namespace :deploy do
   task :restart do
     invoke 'unicorn:restart'
   end
-
-  # Use this sample to create links to config files on submodules.
-  # after :restart, :create_config_links do
-  #   on roles(:app) do
-  #     execute :ln, '-s', "#{deploy_to}/shared/config/settings.yml #{current_path}/vendor/rumblefish/database/config/settings.yml"
-  #   end
-  # end
 end
