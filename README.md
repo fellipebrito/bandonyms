@@ -1,7 +1,6 @@
 Bandonyms
 =========
-
-[![Code Climate](https://codeclimate.com/repos/5359773f6956800405011b83/badges/98593d72e4c9abab3c54/gpa.png)](https://codeclimate.com/repos/5359773f6956800405011b83/feed)
+[![Code Climate](https://codeclimate.com/github/fellipebrito/bandonyms.png)](https://codeclimate.com/github/fellipebrito/bandonyms)
 
 An webapp to play the game Bandonyms.
 
