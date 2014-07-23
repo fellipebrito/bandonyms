@@ -5,15 +5,26 @@ class App < Sinatra::Base
   enable :sessions
 
   get '/' do
-    session[:game] = @game = Game.new 'King', 'Queen'
+    @game = create_game
     erb :homepage
   end
 
   post '/' do
-    @game = session[:game]
+    @game = active_game
     @game.guess params[:guess]
     session[:game] = @game
     erb template
+  end
+
+  def create_game
+    session.clear
+
+    band = Band.new
+    session[:game] = Game.new band.secret, band.name
+  end
+
+  def active_game
+     session[:game] ||= create_game
   end
 
   def template

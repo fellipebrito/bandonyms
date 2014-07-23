@@ -42,6 +42,9 @@ GEM
       rack
     rack-test (0.6.2)
       rack (>= 1.0)
+    rack_session_access (0.1.1)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rainbow (1.99.2)
     raindrops (0.13.0)
     rspec (2.14.1)
@@ -91,6 +94,7 @@ DEPENDENCIES
   codeclimate-test-reporter
   cucumber
   logging (~> 1.8.2)
+  rack_session_access
   rainbow (~> 1.99.2)
   rspec
   rubocop

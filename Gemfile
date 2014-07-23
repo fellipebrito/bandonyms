@@ -13,6 +13,7 @@ group :test do
   gem 'cucumber'
   gem 'capybara'                                 # Acceptance test framework for web applications
   gem 'rspec'
+  gem 'rack_session_access'
 end
 
 # - Hooks and StyleGuide
