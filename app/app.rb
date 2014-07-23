@@ -2,8 +2,11 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 
 class App < Sinatra::Base
-  enable :sessions
-  set :public_dir, 'public'
+  configure do
+    enable :sessions
+    set :session_secret, 'secret'
+    set :public_dir, 'public'
+  end
 
   get '/' do
     @game = create_game
@@ -25,8 +28,7 @@ class App < Sinatra::Base
   end
 
   def active_game
-    return create_game unless session[:game]
-    session[:game]
+     session[:game] ||= create_game
   end
 
   def template
