@@ -9,7 +9,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
-    @game = create_game
+    @game = start_game
     erb :homepage
   end
 
@@ -20,7 +20,7 @@ class App < Sinatra::Base
     erb template
   end
 
-  def create_game
+  def start_game
     session.clear
 
     band = Band.new
@@ -28,7 +28,7 @@ class App < Sinatra::Base
   end
 
   def active_game
-     session[:game] ||= create_game
+     session[:game] ||= start_game
   end
 
   def template
