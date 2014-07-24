@@ -1,5 +1,9 @@
 class Answer < ActiveRecord::Base
   validates_presence_of :title
+  has_many :clues, dependent: :destroy
+end
 
-  # has_many :tips, dependent: :destroy
+class Clue < ActiveRecord::Base
+  validates_presence_of :title
+  belongs_to :answer
 end

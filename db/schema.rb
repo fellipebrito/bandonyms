@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724050819) do
+ActiveRecord::Schema.define(version: 20140724070614) do
 
   create_table "answers", force: true do |t|
     t.string "title"
   end
+
+  create_table "clues", force: true do |t|
+    t.integer "answer_id"
+    t.string  "title"
+  end
+
+  add_index "clues", ["answer_id"], name: "index_clues_on_answer_id"
 
 end

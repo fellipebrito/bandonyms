@@ -26,10 +26,10 @@ if ENV['CODECLIMATE_REPO_TOKEN']
   ]
 end
 
-require File.dirname(__FILE__) + "/../boot.rb"
-
 RSpec.configure do |config|
-    config.include FactoryGirl::Syntax::Methods
+  config.include FactoryGirl::Syntax::Methods
 end
+FactoryGirl.find_definitions
 
+require File.dirname(__FILE__) + "/../boot.rb"
 require File.dirname(__FILE__) + '/../app/app.rb'
