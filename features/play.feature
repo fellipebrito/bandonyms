@@ -10,6 +10,11 @@ Feature: gameplay
     And I should see "your band's antonym is King"
     And I should see "guess" field
 
+  Scenario: user skips and reload
+    Given I start a game with the band "Queen" and the secret "King"
+    When I follow "Skip..."
+    Then I should see "Let's play a game!"
+
   Scenario: user guess the correct band's name
     Given I start a game with the band "Queen" and the secret "King"
     When I fill in "guess" with "Queen"
@@ -29,12 +34,11 @@ Feature: gameplay
     Then I should see "Try again!"
     And I should see "You already tried 1 time"
 
-  Scenario: user guess the wrong band's name more than 5 times
+  Scenario: user guess the wrong band's name more than 3 times
     Given I start a game with the band "Queen" and the secret "King"
-    When I already tried 4 times
+    When I already tried 3 times
     And I fill in "guess" with "Pawn"
     And I press "Try it!"
-    Then I should see "You already tried 5 time(s)"
-    And I should see "Game over. Go home, you are drunk"
-    And I should see "Restart the game with another band"
+    Then I should see "Game over. Go home, you are drunk"
+    And I should see "Retry with another band"
     And I should not see "guess" field

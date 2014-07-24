@@ -23,8 +23,8 @@ class App < Sinatra::Base
   def start_game
     session.clear
 
-    band = Band.new
-    session[:game] = Game.new band.secret, band.name
+    answer = Answer.all.sample
+    session[:game] = Game.new answer.clues.sample.title, answer.title
   end
 
   def active_game
@@ -33,7 +33,7 @@ class App < Sinatra::Base
 
   def template
     template   = :success if @game.right_answer?
-    template   = :failed  if @game.tries >= 5
+    template   = :failed  if @game.tries >= 3
     template ||= :homepage
     template
   end
