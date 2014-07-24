@@ -1,11 +1,16 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require "sinatra/activerecord"
 
 class App < Sinatra::Base
+  register Sinatra::ActiveRecordExtension
+
   configure do
     enable :sessions
     set :session_secret, 'secret'
     set :public_dir, 'public'
+    set :database, {adapter: "sqlite3", database: "db/dev.sqlite3"}
+    # or set :database_file, "path/to/database.yml"
   end
 
   get '/' do

@@ -8,6 +8,11 @@ gem 'sinatra-contrib'
 
 gem 'logging', '~> 1.8.2'
 
+# Database
+gem "sinatra-activerecord"
+gem "sqlite3"
+gem "rake"
+
 group :test do
   gem 'codeclimate-test-reporter'                # Code Climate Test Coverage
   gem 'cucumber'
