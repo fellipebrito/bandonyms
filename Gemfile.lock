@@ -49,6 +49,7 @@ GEM
     minitest (5.4.0)
     multi_json (1.9.0)
     multi_test (0.0.3)
+    mysql (2.9.1)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     parser (2.1.7)
@@ -122,6 +123,7 @@ DEPENDENCIES
   cucumber
   factory_girl (~> 4.0)
   logging (~> 1.8.2)
+  mysql
   rack_session_access
   rainbow (~> 1.99.2)
   rake

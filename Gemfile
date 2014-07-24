@@ -9,10 +9,11 @@ gem 'sinatra-contrib'
 gem 'logging', '~> 1.8.2'
 
 # Database
-gem "activerecord"
-gem "sinatra-activerecord"
-gem "sqlite3"
-gem "rake"
+gem 'activerecord'
+gem 'sinatra-activerecord'
+gem 'sqlite3'
+gem 'mysql'
+gem 'rake'
 
 group :test do
   gem 'codeclimate-test-reporter'                # Code Climate Test Coverage
@@ -20,7 +21,7 @@ group :test do
   gem 'capybara'                                 # Acceptance test framework for web applications
   gem 'rspec'
   gem 'rack_session_access'
-  gem "factory_girl", "~> 4.0"
+  gem 'factory_girl', '~> 4.0'
 end
 
 # - Hooks and StyleGuide

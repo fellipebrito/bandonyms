@@ -7,7 +7,7 @@ environment = ENV['RACK_ENV'] || 'development'
 
 # ActiveRecord
 dbconfig = YAML.load(File.read('config/database.yml'))
-#p dbconfig[environment]
+p dbconfig[environment]
 ActiveRecord::Base.establish_connection dbconfig[environment]
 
 # Load Libs
