@@ -17,6 +17,7 @@ gem 'rake'
 gem "koala", "~> 1.10.0rc"
 
 group :test do
+  gem 'pry'
   gem 'codeclimate-test-reporter'                # Code Climate Test Coverage
   gem 'cucumber'
   gem 'capybara'                                 # Acceptance test framework for web applications

@@ -51,6 +51,8 @@ class App < Sinatra::Base
   end
 
   get '/callback' do
+    redirect '/' unless session[:oauth]
+
     session[:access_token] = session[:oauth].get_access_token(params[:code])
     session[:access_token]
 
