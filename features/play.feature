@@ -16,9 +16,14 @@ Feature: gameplay
     And I press "Try it!"
     Then I should see "Well Done bro"
 
+  Scenario: user guess the correct band's name not cap sensitive
+    Given I start a game with the band "Queen" and the secret "King"
+    When I fill in "guess" with "qUEeN"
+    And I press "Try it!"
+    Then I should see "Well Done bro"
+
   Scenario: user guess the wrong band's name
     Given I start a game with the band "Queen" and the secret "King"
-    And I start a game with the band "Queen" and the secret "King"
     When I fill in "guess" with "Pawn"
     And I press "Try it!"
     Then I should see "Try again!"
@@ -26,7 +31,6 @@ Feature: gameplay
 
   Scenario: user guess the wrong band's name more than 5 times
     Given I start a game with the band "Queen" and the secret "King"
-    And I start a game with the band "Queen" and the secret "King"
     When I already tried 4 times
     And I fill in "guess" with "Pawn"
     And I press "Try it!"

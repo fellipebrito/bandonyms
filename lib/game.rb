@@ -14,7 +14,7 @@ class Game
   end
 
   def right_answer?
-    if @guess == @band
+    if @guess.downcase == @band.downcase
       @message = 'Well Done bro'
       return true
     end
