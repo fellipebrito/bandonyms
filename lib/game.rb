@@ -26,10 +26,10 @@ class Game
   def count_tries
     @message = "You already tried #{@tries} time(s). "
 
-    if @tries < 5
+    if @tries < 3
       @message += 'Try again!'
     else
-      @message += 'Game over. Go home, you are drunk'
+      @message = 'Game over. Go home, you are drunk'
     end
   end
 end

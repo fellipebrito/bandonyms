@@ -26,10 +26,10 @@ describe Game do
   describe '#count_tries' do
     it 'exceeded the limit of tries' do
       game = Game.new answer.clues.first.title, answer.title
-      game.tries = 4
+      game.tries = 2
       game.guess 'Pawn'
       game.right_answer?
-      expect(game.message).to eql 'You already tried 5 time(s). Game over. Go home, you are drunk'
+      expect(game.message).to eql 'Game over. Go home, you are drunk'
     end
   end
 end
