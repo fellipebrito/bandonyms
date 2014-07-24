@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'koala'
 
 class App < Sinatra::Base
   configure do
@@ -9,6 +10,7 @@ class App < Sinatra::Base
   end
 
   get '/' do
+    @user = Koala::Facebook::GraphAPI.new(session["access_token"]).get_object("me") if session[:access_token]
     @game = start_game
     erb :homepage
   end
@@ -21,7 +23,7 @@ class App < Sinatra::Base
   end
 
   def start_game
-    session.clear
+    session[:game] = nil
 
     answer = Answer.all.sample
     session[:game] = Game.new answer.clues.sample.title, answer.title
@@ -40,4 +42,24 @@ class App < Sinatra::Base
 
   # start the server if ruby file executed directly
   run! if app_file == $PROGRAM_NAME
+
+
+  # Facebook
+  get '/login' do
+    session[:oauth] = Koala::Facebook::OAuth.new(490209437790343, '768ba6c42e2b877275191444755627e9', "#{request.base_url}/callback")
+    redirect session[:oauth].url_for_oauth_code()
+  end
+
+  get '/callback' do
+    session[:access_token] = session[:oauth].get_access_token(params[:code])
+    session[:access_token]
+
+    redirect '/'
+  end
+
+  get '/logout' do
+    session[:oauth] = nil
+    session[:access_token] = nil
+    redirect '/'
+  end
 end

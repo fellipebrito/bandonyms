@@ -14,6 +14,7 @@ gem 'sinatra-activerecord'
 gem 'sqlite3'
 gem 'mysql'
 gem 'rake'
+gem "koala", "~> 1.10.0rc"
 
 group :test do
   gem 'codeclimate-test-reporter'                # Code Climate Test Coverage
