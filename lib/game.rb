@@ -8,6 +8,10 @@ class Game
     @message = 'Let\'s play a game!'
   end
 
+  def user
+    { 'name' => 'Fellipe Brito' }
+  end
+
   def guess user_guess
     @tries += 1
     @guess = user_guess

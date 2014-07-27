@@ -17,6 +17,7 @@ Feature: gameplay
 
   Scenario: user guess the correct band's name
     Given I start a game with the band "Queen" and the secret "King"
+    Given I am on the homepage
     When I fill in "guess" with "Queen"
     And I press "Try it!"
     Then I should see "Well Done bro"
