@@ -1,4 +1,4 @@
 class Answer < ActiveRecord::Base
-  validates :title
+  validates :title, presence: true
   has_many :clues, dependent: :destroy
 end
