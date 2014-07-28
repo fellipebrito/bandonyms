@@ -7,6 +7,12 @@ describe 'App' do
     App.new
   end
 
+  subject do
+    app = App.allocate
+    app.send :initialize
+    app
+  end
+
   describe '#homepage' do
     it 'start the project' do
       get '/'
@@ -36,8 +42,15 @@ describe 'App' do
       # oauth.stub(:get_access_token){ true }
       # expect(Koala::Facebook::OAuth).to receive(:get_access_token)
 
+      App.stub(:oauth){nil}
       get '/callback'
       last_response.body.include?('Let\'s play a game!')
     end
+
+    it 'callback' do
+      subject.stub(:oauth){nil}
+      expect(subject.send :process_callback).to eql '/'
+    end
+
   end
 end

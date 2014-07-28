@@ -5,18 +5,22 @@ class App < Sinatra::Base
   end
 
   get '/logout' do
-    destroy_oauth
-    redirect '/'
+    redirect logout
   end
 
   get '/callback' do
-    process_callback
-    redirect '/'
+    redirect process_callback
   end
 
   private
+
   def oauth
     Koala::Facebook::OAuth.new(490_209_437_790_343, '768ba6c42e2b877275191444755627e9', "#{request.base_url}/callback")
+  end
+
+  def logout
+    destroy_oauth
+    '/'
   end
 
   def destroy_oauth
@@ -38,5 +42,6 @@ class App < Sinatra::Base
 
   def process_callback
     session[:access_token] = oauth.get_access_token(params[:code]) if oauth
+    '/'
   end
 end
