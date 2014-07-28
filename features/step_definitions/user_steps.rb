@@ -10,7 +10,7 @@ end
 
 When(/^I click to login with facebook$/) do
   App.any_instance.stub(:koala_user).and_return({ 'name' => 'Bruce Wayne'} )
-  App.any_instance.stub(:oauth_redirect_url).and_return('/')
+  App.any_instance.stub(:redirect_url).and_return('/')
   click_on 'Sign in with Facebook'
 end
 

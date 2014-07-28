@@ -1,2 +1,2 @@
 require_relative 'game'
-require_relative 'auth'
+require_relative 'oauth'
