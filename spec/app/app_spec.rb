@@ -36,10 +36,6 @@ describe 'App' do
     end
 
     it 'callback' do
-      # oauth = double(Object)
-      # oauth.stub(:get_access_token){ true }
-      # expect(Koala::Facebook::OAuth).to receive(:get_access_token)
-
       App.stub(:oauth){nil}
       get '/callback'
       last_response.body.include?('Let\'s play a game!')
