@@ -8,9 +8,7 @@ describe 'App' do
   end
 
   subject do
-    app = App.allocate
-    app.send :initialize
-    app
+    App.new!
   end
 
   describe '#homepage' do
