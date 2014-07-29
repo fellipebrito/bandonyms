@@ -1,5 +1,7 @@
 require 'yaml'
 require 'active_record'
+require 'koala'
+require 'pry'
 
 environment = ENV['RACK_ENV'] || 'development'
 

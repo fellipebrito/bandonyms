@@ -24,9 +24,12 @@ ActiveRecord::Schema.define(version: 20140729000804) do
 
   add_index "clues", ["answer_id"], name: "index_clues_on_answer_id"
 
-  create_table "user", force: true do |t|
-    t.string "name"
-    t.string "access_token"
+  create_table "users", force: true do |t|
+    t.integer "facebook_id"
+    t.string  "access_token"
+    t.string  "name"
+    t.string  "gender"
+    t.string  "link"
   end
 
 end
