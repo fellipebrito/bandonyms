@@ -1,3 +1,5 @@
+require 'koala'
+
 class App < Sinatra::Base
   get '/login' do
     create_session
