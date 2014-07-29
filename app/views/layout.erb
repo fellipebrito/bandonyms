@@ -35,17 +35,22 @@
 
     <div class="container">
       <div class="header">
-        <ul class="nav nav-pills pull-right">
-          <li class="active"><a href="/">Home</a></li>
-          <li><a href="http://fellipebrito.com" target="_blank">Author</a></li>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if @user %>
+            <li><a href="#"><%= @user['name'] if @user %></a></li>
+            <li><a href="/logout">logout</a></li>
+          <% else %>
+            <li><a class='btn btn-info' href='/login' style="width:12em"> Sign in with Facebook</a></li>
+          <% end %>
         </ul>
         <h3 class="text-muted"><a href="/">Bandonyms</a></h3>
+
       </div>
 
       <div class="jumbotron">
         <%= yield %>
       </div>
-
       <div class="footer">
         <div class="row">
           <div class="col-lg-12">

@@ -1,4 +1,4 @@
 class Clue < ActiveRecord::Base
-  validates_presence_of :title
+  validates :title, presence: true
   belongs_to :answer
 end

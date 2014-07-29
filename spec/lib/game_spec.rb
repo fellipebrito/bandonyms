@@ -13,13 +13,13 @@ describe Game do
     it 'is the correct answer' do
       game = Game.new answer.clues.first.title, answer.title
       game.guess answer.title
-      expect(game.right_answer?).to be_true
+      expect(game.right_answer?).to be_truthy
     end
 
     it 'is the wrong answer' do
       game = Game.new answer.clues.first.title, answer.title
       game.guess 'Pawn'
-      expect(game.right_answer?).to be_false
+      expect(game.right_answer?).to be_falsey
     end
   end
 

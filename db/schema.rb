@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140724070614) do
+ActiveRecord::Schema.define(version: 20140729000804) do
 
   create_table "answers", force: true do |t|
     t.string "title"
@@ -23,5 +23,13 @@ ActiveRecord::Schema.define(version: 20140724070614) do
   end
 
   add_index "clues", ["answer_id"], name: "index_clues_on_answer_id"
+
+  create_table "users", force: true do |t|
+    t.integer "facebook_id"
+    t.string  "access_token"
+    t.string  "name"
+    t.string  "gender"
+    t.string  "link"
+  end
 
 end
