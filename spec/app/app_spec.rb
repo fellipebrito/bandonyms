@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe 'App' do
   include Rack::Test::Methods
