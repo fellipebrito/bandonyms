@@ -47,11 +47,11 @@ describe 'App' do
   end
 
   describe '#signin' do
-  #   it 'signin a new user' do
-  #     expect(subject).to receive(:facebook_user){ { "id" => 1 } }
-  #     expect(subject.send :signin).to instance_of User
-  #   end
-    it 'capture information about the facebook user' do
+    xit 'signin a new user' do
+      expect(subject).to receive(:facebook_user){ { "id" => 1 } }
+      expect(subject.send :signin).to instance_of User
+    end
+    xit 'capture information about the facebook user' do
       expect(Koala::Facebook::GraphAPI).to receive(:new){ 'user' }
       expect(subject.send :facebook_user).to eql 'user'
     end
