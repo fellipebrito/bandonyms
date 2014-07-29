@@ -16,6 +16,14 @@ class App < Sinatra::Base
 
   private
 
+  def create_session
+    session[:oauth] = oauth
+  end
+
+  def redirect_url
+    oauth.url_for_oauth_code
+  end
+
   def oauth
     Koala::Facebook::OAuth.new(490_209_437_790_343, '768ba6c42e2b877275191444755627e9', "#{request.base_url}/callback")
   end
@@ -30,16 +38,8 @@ class App < Sinatra::Base
     session[:access_token] = nil
   end
 
-  def create_session
-    session[:oauth] = oauth
-  end
-
-  def koala_user
+  def active_user
     Koala::Facebook::GraphAPI.new(session['access_token']).get_object('me') if session[:access_token]
-  end
-
-  def redirect_url
-    oauth.url_for_oauth_code
   end
 
   def process_callback

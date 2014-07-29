@@ -1,6 +1,6 @@
 class App < Sinatra::Base
   get '/' do
-    @user = koala_user
+    @user = active_user
     @game = start_game
     erb :homepage
   end
