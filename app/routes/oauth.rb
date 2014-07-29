@@ -1,5 +1,3 @@
-require 'koala'
-
 class App < Sinatra::Base
   get '/login' do
     create_session
@@ -39,7 +37,24 @@ class App < Sinatra::Base
   end
 
   def active_user
-    Koala::Facebook::GraphAPI.new(session['access_token']).get_object('me') if session[:access_token]
+    signin if session[:access_token]
+  end
+
+  def signin
+    user = User.find_by(facebook_id: facebook_user["id"])
+
+    signup facebook_user unless user
+
+    user
+  end
+
+  def facebook_user
+    Koala::Facebook::GraphAPI.new(session[:access_token]).get_object('me')
+  end
+
+  def signup facebook_user
+    user = User.new unless user
+    user.signup facebook_user
   end
 
   def process_callback
