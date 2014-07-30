@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   validates :name, presence: true
   validates :facebook_id, uniqueness: true
+  has_many :matches, dependent: :destroy
 
   def signup facebook_user
     # :access_token => facebook_user["j"],

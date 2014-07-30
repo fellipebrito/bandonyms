@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140729000804) do
+ActiveRecord::Schema.define(version: 20140730072550) do
 
   create_table "answers", force: true do |t|
     t.string "title"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 20140729000804) do
   end
 
   add_index "clues", ["answer_id"], name: "index_clues_on_answer_id"
+
+  create_table "matches", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "answer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "matches", ["answer_id"], name: "index_matches_on_answer_id"
+  add_index "matches", ["user_id"], name: "index_matches_on_user_id"
 
   create_table "users", force: true do |t|
     t.integer "facebook_id"
