@@ -19,7 +19,7 @@ class App < Sinatra::Base
     session[:game] = nil
 
     answer = Answer.all.sample
-    session[:game] = Game.new @user, answer
+    session[:game] = Game.new answer.title, answer.clues.first.title
   end
 
   def active_game

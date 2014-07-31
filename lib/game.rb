@@ -1,10 +1,9 @@
 class Game
-  attr_accessor :user, :answer, :clue, :tries, :message
+  attr_accessor :answer, :clue, :tries, :message
 
-  def initialize user, answer
-    @user = user
+  def initialize answer, clue
     @answer = answer
-    @clue = @answer.clues.first
+    @clue = clue
     @tries = 0
     @message = 'Let\'s play a game!'
   end
@@ -14,15 +13,20 @@ class Game
     @guess = user_guess
   end
 
-  def right_answer?
-    if @guess.downcase == @answer.title.downcase
-      Match.create user: @user, answer: @answer
+  def right_answer? user
+    if @guess.downcase == @answer.downcase
+      save_user_match user
       @message = 'Well Done bro'
       return true
     end
 
     count_tries
     false
+  end
+
+  def save_user_match user
+    answer = Answer.find_by title: @answer
+    Match.create user: user, answer: answer
   end
 
   def count_tries

@@ -4,8 +4,7 @@ require 'sinatra/reloader'
 class App < Sinatra::Base
   configure do
     enable :sessions
-    set :session_secret, 'secret'
-    use Rack::Session::Pool
+    set :session_secret, 'paralelepipedo'
     set :public_dir, 'public'
   end
 
@@ -14,7 +13,7 @@ class App < Sinatra::Base
   private
 
   def template
-    template   = :success if @game.right_answer?
+    template   = :success if @game.right_answer? active_user
     template   = :failed  if @game.tries >= 3
     template ||= :homepage
     template
