@@ -1,7 +1,11 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require 'sinatra/config_file'
 
 class App < Sinatra::Base
+  register Sinatra::ConfigFile
+  config_file '../config/settings.yml'
+
   configure do
     enable :sessions
     set :session_secret, 'paralelepipedo'
