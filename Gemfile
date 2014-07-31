@@ -26,6 +26,7 @@ group :test do
   gem 'rspec', '2.14.1'
   gem 'rack_session_access'
   gem 'factory_girl', '~> 4.0'
+  gem 'database_cleaner'
 end
 
 # - Hooks and StyleGuide

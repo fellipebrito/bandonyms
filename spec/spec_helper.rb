@@ -3,6 +3,7 @@ require 'rspec/mocks'
 require 'simplecov'
 require 'rack/test'
 require 'factory_girl'
+require 'database_cleaner'
 
 ENV['RACK_ENV'] = 'test'
 
@@ -12,10 +13,10 @@ SimpleCov.start do
 end
 
 if ENV['CODECLIMATE_REPO_TOKEN']
-  require "codeclimate-test-reporter"
+  require 'codeclimate-test-reporter'
 
   CodeClimate::TestReporter.configure do |config|
-      config.logger.level = Logger::WARN
+    config.logger.level = Logger::WARN
   end
   CodeClimate::TestReporter.start
 
@@ -27,9 +28,14 @@ if ENV['CODECLIMATE_REPO_TOKEN']
 end
 
 RSpec.configure do |config|
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
   config.include FactoryGirl::Syntax::Methods
 end
 FactoryGirl.find_definitions
 
-require File.dirname(__FILE__) + "/../boot.rb"
+require File.dirname(__FILE__) + '/../boot.rb'
 require File.dirname(__FILE__) + '/../app/app.rb'

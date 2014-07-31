@@ -10,6 +10,9 @@ describe 'App' do
     App.new!
   end
 
+  before(:all) { FactoryGirl.create(:answer) }
+  let(:answer) { Answer.first  }
+
   describe '#homepage' do
     it 'start the project' do
       get '/'
@@ -17,7 +20,7 @@ describe 'App' do
       last_response.body.include?('Your guess')
     end
 
-    it 'guess a band' do
+    it 'guess an answer' do
       post '/', params = { guess: 'Queen' }
       last_response.body.include?('Let\'s play a game!')
     end
@@ -41,18 +44,18 @@ describe 'App' do
     end
 
     it 'callback' do
-      expect(subject).to receive(:oauth){nil}
+      expect(subject).to receive(:oauth) { nil }
       expect(subject.send :process_callback).to eql '/'
     end
   end
 
   describe '#signin' do
     xit 'signin a new user' do
-      expect(subject).to receive(:facebook_user){ { "id" => 1 } }
+      expect(subject).to receive(:facebook_user) { { 'id' => 1 } }
       expect(subject.send :signin).to instance_of User
     end
     xit 'capture information about the facebook user' do
-      expect(Koala::Facebook::GraphAPI).to receive(:new){ 'user' }
+      expect(Koala::Facebook::GraphAPI).to receive(:new) { 'user' }
       expect(subject.send :facebook_user).to eql 'user'
     end
   end

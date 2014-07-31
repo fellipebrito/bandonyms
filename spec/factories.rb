@@ -10,5 +10,13 @@ FactoryGirl.define do
   factory :clue do
     title 'King'
   end
+
+  factory :user do
+    facebook_id  '123'
+    access_token 'ABC'
+    name         'Bruce Wayne'
+    gender       'male'
+    link         'http://facebook.com/batman'
+  end
 end
 

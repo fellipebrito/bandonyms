@@ -3,7 +3,8 @@ require 'sinatra/reloader'
 
 class App < Sinatra::Base
   configure do
-    enable :sessions
+    # enable :sessions
+    use Rack::Session::Pool
     set :session_secret, 'secret'
     set :public_dir, 'public'
   end

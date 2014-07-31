@@ -1,9 +1,10 @@
 class Game
-  attr_accessor :band, :secret, :tries, :message
+  attr_accessor :user, :answer, :clue, :tries, :message
 
-  def initialize secret, band
-    @secret = secret
-    @band = band
+  def initialize user, answer
+    @user = user
+    @answer = answer
+    @clue = @answer.clues.first
     @tries = 0
     @message = 'Let\'s play a game!'
   end
@@ -14,7 +15,8 @@ class Game
   end
 
   def right_answer?
-    if @guess.downcase == @band.downcase
+    if @guess.downcase == @answer.title.downcase
+      Match.create user: @user, answer: @answer
       @message = 'Well Done bro'
       return true
     end

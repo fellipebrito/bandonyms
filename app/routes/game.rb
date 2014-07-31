@@ -6,6 +6,7 @@ class App < Sinatra::Base
   end
 
   post '/' do
+    @user = active_user
     @game = active_game
     @game.guess params[:guess]
     session[:game] = @game
@@ -18,7 +19,7 @@ class App < Sinatra::Base
     session[:game] = nil
 
     answer = Answer.all.sample
-    session[:game] = Game.new answer.clues.sample.title, answer.title
+    session[:game] = Game.new @user, answer
   end
 
   def active_game
