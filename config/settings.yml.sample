@@ -1,0 +1,7 @@
+development:
+  facebook_app_id: 123
+  facebook_secret: 'a1b2c3'
+
+production:
+  facebook_app_id: 123
+  facebook_secret: 'a1b2c3'
