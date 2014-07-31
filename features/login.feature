@@ -8,6 +8,7 @@ Feature: login
     Given I am not logged in
     When I click to login with facebook
     Then I should be signed in
+    And I should see "right answers"
 
   Scenario: logout
     Given I am logged in

@@ -38,7 +38,7 @@
 
         <ul class="nav navbar-nav navbar-right">
           <% if @user %>
-            <li><a href="#"><%= @user['name'] if @user %></a></li>
+            <li><a href="#"><%= @user[:name] if @user %> - <%= @user.matches.count %>  right answers</a></li>
             <li><a href="/logout">logout</a></li>
           <% else %>
             <li><a class='btn btn-info' href='/login' style="width:12em"> Sign in with Facebook</a></li>

@@ -3,14 +3,30 @@ Given /^I am not logged in$/ do
 end
 
 Given(/^I am logged in$/) do
-  App.any_instance.stub(:active_user).and_return({ 'name' => 'Bruce Wayne'} )
+  matches = double(Match)
+  expect(matches).to receive(:count){ 5 }
+
+  user = double(User)
+  expect(user).to receive(:[]){ 'Bruce Wayne' }
+  expect(user).to receive(:matches){ matches }
+
+  App.any_instance.stub(:active_user).and_return( user )
+
   visit '/'
   page.should have_content "Bruce Wayne"
 end
 
 When(/^I click to login with facebook$/) do
-  App.any_instance.stub(:active_user).and_return({ 'name' => 'Bruce Wayne'} )
+  matches = double(Match)
+  expect(matches).to receive(:count){ 5 }
+
+  user = double(User)
+  expect(user).to receive(:[]){ 'Bruce Wayne' }
+  expect(user).to receive(:matches){ matches }
+
+  App.any_instance.stub(:active_user).and_return( user )
   App.any_instance.stub(:redirect_url).and_return('/')
+
   click_on 'Sign in with Facebook'
 end
 
