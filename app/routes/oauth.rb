@@ -58,7 +58,7 @@ class App < Sinatra::Base
   end
 
   def process_callback
-    '/'
     session[:access_token] = oauth.get_access_token(params[:code]) if oauth
+    '/'
   end
 end
