@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140730072550) do
     t.string  "title"
   end
 
-  add_index "clues", ["answer_id"], name: "index_clues_on_answer_id"
+  add_index "clues", ["answer_id"], name: "index_clues_on_answer_id", using: :btree
 
   create_table "matches", force: true do |t|
     t.integer  "user_id"
@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20140730072550) do
     t.datetime "updated_at"
   end
 
-  add_index "matches", ["answer_id"], name: "index_matches_on_answer_id"
-  add_index "matches", ["user_id"], name: "index_matches_on_user_id"
+  add_index "matches", ["answer_id"], name: "index_matches_on_answer_id", using: :btree
+  add_index "matches", ["user_id"], name: "index_matches_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.integer "facebook_id"

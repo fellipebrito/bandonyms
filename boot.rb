@@ -1,9 +1,10 @@
+environment = ENV['RACK_ENV'] || 'development'
+
 require 'yaml'
 require 'active_record'
 require 'koala'
-require 'pry'
+require 'pry' unless environment == 'production'
 
-environment = ENV['RACK_ENV'] || 'development'
 
 @config = YAML.load File.open './config/settings.yml'
 
