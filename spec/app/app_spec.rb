@@ -59,4 +59,11 @@ describe 'App' do
       expect(subject.send :facebook_user).to eql 'user'
     end
   end
+
+  describe '#ranking' do
+    it 'list the top 10 users' do
+      get '/ranking'
+      last_response.body.include?('Ranking')
+    end
+  end
 end

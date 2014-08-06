@@ -1,0 +1,11 @@
+<h1>Ranking</h1>
+
+<ul class="list-group">
+  <% @users.each do |u| %>
+    <li class="list-group-item">
+      <span class="badge"><%= u['matches']%></span>
+      <img src='http://graph.facebook.com/<%= u['facebook_id']%>/picture?type=square' />
+      <%= u['name']%>
+    </li>
+  <% end %>
+</ul>
