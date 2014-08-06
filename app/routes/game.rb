@@ -19,7 +19,6 @@ class App < Sinatra::Base
                   WHERE matches.user_id = users.id
                 ) as matches
                FROM users
-               WHERE matches > 0
                ORDER BY matches DESC
                LIMIT 0,10'
 
