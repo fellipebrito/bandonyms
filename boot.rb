@@ -5,7 +5,6 @@ require 'active_record'
 require 'koala'
 require 'pry' unless environment == 'production'
 
-
 @config = YAML.load File.open './config/settings.yml'
 
 # ActiveRecord
