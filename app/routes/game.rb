@@ -14,6 +14,8 @@ class App < Sinatra::Base
   end
 
   get '/ranking' do
+    @user = active_user
+
     raw_sql = 'SELECT *,
                 (SELECT count(id) FROM matches
                   WHERE matches.user_id = users.id

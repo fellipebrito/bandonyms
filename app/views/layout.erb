@@ -37,6 +37,7 @@
       <div class="header">
 
         <ul class="nav navbar-nav navbar-right">
+          <li><a href="/ranking"><img src='/img/trophy.png' style='float: left; margin-top: -5px; margin-right: 5px;' width='30' />Ranking</a></li>
           <% if @user %>
             <li><a href="#"><%= @user[:name] if @user %> - <%= @user.matches.count %>  right answers</a></li>
             <li><a href="/logout">logout</a></li>
